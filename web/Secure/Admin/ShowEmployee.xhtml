@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="newTemplate.xhtml">
+            <ui:define name="content">
+               
+                    <!-- Responsive Table Container -->
+                    <div class="table-responsive">
+                        <h:dataTable value="#{adminCdiBean.showEmployee()}" var="item" class="display table table-striped table-hover">
+                            <!-- Employee UserId Column -->
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="UserId" />
+                                </f:facet>
+                                <h:outputText value="#{item.userId}" />
+                            </h:column>
+
+                            <!-- Employee First Name Column -->
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="First Name" />
+                                </f:facet>
+                                <h:outputText value="#{item.empFirstname}" />
+                            </h:column>
+
+                            <!-- Employee Last Name Column -->
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Last Name" />
+                                </f:facet>
+                                <h:outputText value="#{item.empLastname}" />
+                            </h:column>
+
+                            <!-- Employee Email Column -->
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Email" />
+                                </f:facet>
+                                <h:outputText value="#{item.empEmail}" />
+                            </h:column>
+
+                            <!-- Employee Phone Column -->
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Phone" />
+                                </f:facet>
+                                <h:outputText value="#{item.empPhone}" />
+                            </h:column>
+
+                            <!-- Employee Address Column -->
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Address" />
+                                </f:facet>
+                                <h:outputText value="#{item.empAddress}" />
+                            </h:column>
+
+                            <!-- Employee Gender Column -->
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Gender" />
+                                </f:facet>
+                                <h:outputText value="#{item.empGender}" />
+                            </h:column>
+
+                            <!-- Employee Hire Date Column -->
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Hire Date" />
+                                </f:facet>
+                                <h:outputText value="#{item.hireDate}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </h:column>
+
+                            <!-- Employee Salary Column -->
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Salary" />
+                                </f:facet>
+                                <h:outputText value="#{item.salary}" />
+                            </h:column>
+
+                            <!-- Employee Manager Name Column -->
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Manager" />
+                                </f:facet>
+                                <h:outputText value="#{empty item.managerName ? '-' : item.managerName}" />
+                            </h:column>
+
+                            <!-- Employee Department Name Column -->
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Department" />
+                                </f:facet>
+                                <h:outputText value="#{item.depId.depName}" />
+                            </h:column>
+
+                            <!-- Edit Button Column -->
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Edit" />
+                                </f:facet>
+                                <h:form>
+                                    <h:commandButton value="Edit" action="#{adminCdiBean.searchEmployee(item.userId)}" 
+                                                styleClass="btn btn-warning btn-sm"      />
+                                </h:form>
+                            </h:column>
+
+                            <!-- Delete Button Column -->
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Delete" />
+                                </f:facet>
+                                <h:form>
+                                    <h:commandButton value="Delete" action="#{adminCdiBean.deleteEmployee(item.userId)}" 
+                                                     styleClass="btn btn-danger btn-sm" />
+                                </h:form>
+                            </h:column>
+                        </h:dataTable>
+                    </div> <!-- End of table-responsive -->
+             
+            </ui:define>
+        </ui:composition>
+
+
+    </h:body>
+</html>

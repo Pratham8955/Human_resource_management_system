@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Pre-Planned Leave List</title>
+        <!-- Bootstrap 5 CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <style>
+            body {
+                background-color: #f8f9fa;
+            }
+            h1 {
+                margin-bottom: 20px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <ui:composition template="newTemplate1.xhtml">
+            <ui:define name="content">
+
+                <f:view>
+                    <div class="container mt-5">
+                        <!-- Page Title -->
+                        <h1 class="text-center ">Pre-Planned Leave List</h1>
+
+                        <!-- Responsive Bootstrap Table -->
+                        <h:form>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover">
+                                    <!-- Table Header -->
+                                    <thead class="table">
+                                        <tr>
+                                            <th>Status</th>
+                                            <th>Application ID</th>
+                                            <th>Request Date</th>
+                                            <th>Leave Type</th>
+                                            <th>Leave Duration</th>
+                                            <th>From Date</th>
+                                            <th>To Date</th>
+                                            <th>Reason</th>
+                                            <th>Manager Name</th>
+                                        </tr>
+                                    </thead>
+                                    <!-- Table Body -->
+                                    <tbody>
+                                        <ui:repeat value="#{employeeCdiBean.leaveListpreplanned()}" var="item">
+                                            <tr>
+                                                <td><h:outputText value="#{empty item.status ? 'Pending' : item.status}" /></td>
+                                                <td><h:outputText value="#{item.applicationId}" /></td>
+                                                <td>
+                                                    <h:outputText value="#{item.requestDate}">
+                                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                                    </h:outputText>
+                                                </td>
+                                                <td><h:outputText value="#{item.leaveType}" /></td>
+                                                <td><h:outputText value="#{item.leaveDuration}" /></td>
+                                                <td>
+                                                    <h:outputText value="#{item.fromDate}">
+                                                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                                    </h:outputText>
+                                                </td>
+                                                <td>
+                                                    <h:outputText value="#{item.toDate}">
+                                                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                                    </h:outputText>
+                                                </td>
+                                                <td><h:outputText value="#{item.reason}" /></td>
+                                                <td><h:outputText value="#{item.managerName}" /></td>
+
+                                            </tr>
+                                        </ui:repeat>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </h:form>
+                    </div>
+                </f:view>
+
+            </ui:define>
+        </ui:composition>
+        <!-- Bootstrap 5 JS Bundle -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </h:body>
+</html>

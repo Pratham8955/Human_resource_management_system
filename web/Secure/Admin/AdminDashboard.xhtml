@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="newTemplate.xhtml">
+            <ui:define name="content">
+
+
+                <!-- Dashboard Header -->
+                <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center justify-content-between pb-3 border-bottom">
+                    <h1 class="h2 fw-semibold">Dashboard</h1>
+                </div>
+
+                <!-- Card Layout for Total Count and Salary -->
+                <div class="row mt-4 g-3">
+                    <!-- Total Employees Card -->
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="card text-center shadow-sm border-0">
+                            <div class="card-body">
+                                
+                                <h5 class="card-title text-muted">Total Employees</h5>
+                                <h3 class="fw-bold">
+                                    #{adminCdiBean.empCount}
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Total Salary Card -->
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="card text-center shadow-sm border-0">
+                            <div class="card-body">
+                                
+                                <h5 class="card-title text-muted">Total Salary</h5>
+                                <h3 class="fw-bold ">
+                                    150000
+                                </h3>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

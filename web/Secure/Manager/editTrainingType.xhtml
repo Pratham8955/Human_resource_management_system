@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Add Training</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    </h:head>
+    <h:body>
+        <ui:composition template="newTemplate2.xhtml">
+            <ui:define name="content">
+                <div class="container mt-5">
+                    <!-- Card for Add Training Form -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title text-center">Edit Training</h2>
+                        </div>
+                        <div class="card-body">
+                            <!-- Form for adding training -->
+                            <h:form>
+
+                                <!-- Input for Trainer -->
+                                <div class="mb-3">
+                                    <h:outputLabel for="managerName" value="Manager Name:" class="form-label" />
+                                    <h:selectOneMenu id="managerName" value="#{managerCdiBean.trainer}" class="form-select">
+                                        <f:selectItem itemLabel="-- Select a Trainer --" itemValue="" />
+                                        <f:selectItems value="#{adminCdiBean.managerNames}" var="manager" 
+                                                       itemLabel="#{manager}" itemValue="#{manager}" />
+                                    </h:selectOneMenu>
+                                </div>
+
+                                <!-- Input for Description -->
+                                <div class="mb-3">
+                                    <h:outputLabel for="description" value="Description:" class="form-label" />
+                                    <h:inputText id="description" value="#{managerCdiBean.description}" required="true" class="form-control" />
+                                </div>
+
+                                <!-- Input for Status -->
+                                <div class="mb-3">
+                                    <h:outputLabel for="status" value="Status:" class="form-label" />
+                                    <h:selectOneMenu id="status" value="#{managerCdiBean.status}" class="form-select">
+                                        <f:selectItem itemLabel="-- Select Training Status --" itemValue="" />
+                                        <f:selectItem itemLabel="Scheduled" itemValue="Scheduled" />
+                                        <f:selectItem itemLabel="Unscheduled" itemValue="Unscheduled" />
+                                    </h:selectOneMenu>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="text-center">
+                                    <h:commandButton value="Edit Training" action="#{managerCdiBean.editTrainingType()}" class="btn btn-primary" />
+                                </div>
+
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

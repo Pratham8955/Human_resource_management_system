@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <title>Employee Details</title>
+        <!-- Include Bootstrap CSS -->
+        <h:outputStylesheet name="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    </h:head>
+
+    <h:body>
+        <ui:composition template="newTemplate1.xhtml">
+            <ui:define name="content">
+
+
+                <!-- JSF form to display the employee details -->
+                <h:form>
+                    <h3>Your Profile</h3>
+
+                    <!-- Display Employee Details -->
+                    <h:panelGrid columns="2">
+                        <h:outputLabel for="name" value="Name: " />
+                        <h:outputText id="name" value="#{employeeCdiBean.profile.empFirstname}" />
+
+                        <h:outputLabel for="email" value="Email: " />
+                        <h:outputText id="email" value="#{employeeCdiBean.profile.empEmail}" />
+
+                        <h:outputLabel for="userId" value="User Id: " />
+                        <h:outputText id="userId" value="#{employeeCdiBean.profile.userId}" />
+
+                        <!-- Display other attributes like department, role, etc. -->
+                        <h:outputLabel for="department" value="Department: " />
+                        <h:outputText id="department" value="#{employeeCdiBean.profile.depId.depName}" />
+
+                        <h:outputLabel for="role" value="Role: " />
+                        <h:outputText id="role" value="#{employeeCdiBean.profile.groupId.role}" />
+                    </h:panelGrid>
+
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+
+</html>

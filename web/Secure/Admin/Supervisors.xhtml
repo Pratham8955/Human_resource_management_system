@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="newTemplate.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    
+                        <!-- Button to Fetch Managers -->
+                        <h:commandButton class="btn btn-primary btn-lg rounded-pill" 
+                                         value="Get All Manager" 
+                                         action="#{adminCdiBean.getAllManager()}"/>
+
+                        <!-- Display Manager Names -->
+                        <h:panelGroup rendered="#{not empty adminCdiBean.managerNames}">
+                            <h3>List of Managers:</h3>
+                            <ul>
+                                <ui:repeat value="#{adminCdiBean.managerNames}" var="name">
+                                    <li>#{name}</li>
+                                </ui:repeat>
+                            </ul>
+                        </h:panelGroup>
+                   
+
+
+                        <h:commandButton class="btn btn-primary btn-lg rounded-pill" value="Get All Employees" action="#{adminCdiBean.getAllEmployee()}">
+
+                    </h:commandButton>
+                        
+                        <h:panelGroup rendered="#{not empty adminCdiBean.employeename}">
+                            <h3>List of Employee</h3>
+                            <ul>
+                                <ui:repeat value="#{adminCdiBean.employeename}" var="name">
+                                    <li>#{name}</li>
+                                </ui:repeat>
+                            </ul>
+                        </h:panelGroup>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>
