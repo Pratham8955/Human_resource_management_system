@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Login</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+        <style>
+            body {
+                max-width: 1000%;
+                font-family: Arial, sans-serif;
+                background-color: #ffffff;
+                margin-right:  300px;
+                margin-top: 100px;
+            }
+
+            .container {
+                max-width: 2000px;
+                margin: 0 auto;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: space-between;
+                background: #ffffff;
+                border-radius: 8px;
+
+                overflow: hidden;
+            }
+
+            .form-container {
+                background: #fefefe;
+                padding: 40px;
+                flex: 0.5;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .image-container {
+                flex: 1;
+                text-align: center;
+                background-color: #ffffff;
+            }
+
+            .image-container img {
+                max-width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+            }
+
+            .btn-primary {
+                background-color: #007bff;
+                border-color: #007bff;
+            }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+                border-color: #0056b3;
+            }
+
+            /* Responsive adjustments for smaller screens */
+            @media (max-width: 768px) {
+                .container {
+                    flex-direction: column;
+                }
+
+                .image-container {
+                    order: -1;
+                    height: 200px;
+                }
+
+                .image-container img {
+                    height: 100%;
+                }
+            }
+        </style>
+    </h:head>
+    <h:body>
+
+        <div class="container">
+            <div class="image-container">
+                <img src="https://img.freepik.com/premium-photo/vibrant-3d-rendering-small-shop-with-colorful-product-icons-light-magenta-orange-tones_655090-3741.jpg" alt="Login Image" />
+            </div>
+
+            <!-- Left Side: Login Form -->
+            <div class="form-container">
+                <h2 class="text-center mb-4">Login</h2>
+                <h:form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Username</label>
+                        <h:inputText id="userid" class="form-control" value="#{loginBean.firstname}" required="true"
+                                     requiredMessage="Username is mandatory" /><h:message for="email" style="color: red;" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+
+                        <h:inputSecret id="password" class="form-control" value="#{loginBean.password}" /></div>
+                    <div class="form-group text-center">
+                        <h:commandButton styleClass="btn btn-primary btn-block" value="Login" action="#{loginBean.login()}" />
+                        <h:commandButton value="Reset" type="reset" styleClass="btn btn-secondary btn-block" />
+                    </div>
+
+                   
+                </h:form>
+            </div>
+
+            <!-- Right Side: Image -->
+
+        </div>
+    </h:body>
+</html>
+
+
+
+

@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="newTemplate.xhtml">
+            <ui:define name="content">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <!-- Include DataTables CSS and JS -->
+                        <h:outputScript library="js" name="jquery.js" />
+                        <h:outputScript library="js" name="datatables.js" />
+                        <h:outputStylesheet library="css" name="datatables.css" />
+
+                        <!-- Table -->
+                        <table id="basic-datatables" class="display table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>UserId</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Address</th>
+                                    <th>Gender</th>
+                                    <th>Password</th>
+                                    <th>Hire Date</th>
+                                    <th>Salary</th>
+                                    <th>Manager Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ui:repeat value="#{adminCdiBean.viewMarketing()}" var="item">
+                                    <tr>
+                                        <td><h:outputText value="#{item.userId}" /></td>
+                                        <td><h:outputText value="#{item.empFirstname}" /></td>
+                                        <td><h:outputText value="#{item.empLastname}" /></td>
+                                        <td><h:outputText value="#{item.empEmail}" /></td>
+                                        <td><h:outputText value="#{item.empPhone}" /></td>
+                                        <td><h:outputText value="#{item.empAddress}" /></td>
+                                        <td><h:outputText value="#{item.empGender}" /></td>
+                                        <td><h:outputText value="#{item.empPassword}" /></td>
+                                        <td>
+                                            <h:outputText value="#{item.hireDate}">
+                                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                            </h:outputText>
+                                        </td>
+                                        <td><h:outputText value="#{item.salary}" /></td>
+                                        <td>
+                                            <h:outputText value="#{empty item.managerName ? '- ' : item.managerName}" />
+                                        </td>
+                                    </tr>
+                                </ui:repeat>
+                            </tbody>
+                        </table>
+
+                        <!-- DataTables Initialization -->
+                        <script>
+                            $(document).ready(function () {
+                                $('#basic-datatables').DataTable({
+                                    paging: true, // Enables pagination
+                                    searching: true, // Enables search box
+                                    ordering: true, // Enables column ordering
+                                    lengthMenu: [10, 25, 50, 100], // Options for "Show entries"
+                                    language: {
+                                        lengthMenu: "Show _MENU_ entries",
+                                        search: "Search:"
+                                    }
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+
+
+
+
+    </h:body>
+</html>

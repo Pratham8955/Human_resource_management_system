@@ -1,0 +1,12 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Dec 15, 2024, 12:16:27 PM
+    Author     : pratham
+*/
+/* Increase the z-index of the calendar to appear above the modal */
+.calendar-datepicker .ui-datepicker {
+    z-index: 1050; /* Modal z-index is usually 1040, so set it higher */
+};

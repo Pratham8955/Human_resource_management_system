@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="newTemplate2.xhtml">
+            <ui:define name="content">
+                <f:view>
+                    <h:form>
+                        <h1><h:outputText value="List of Tasks"/></h1>
+
+
+                        <div class="table-responsive">
+                            <h:dataTable value="#{managerCdiBean.ShowTaskForManager()}" var="item" 
+                                         styleClass="table table-bordered table-striped table-hover">
+
+
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Emp Name"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.empName}"/>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Entry Date"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.entryDate}">
+                                        <f:convertDateTime pattern="MM/dd/yyyy"/>
+                                    </h:outputText>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Task"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.task}"/>
+                                </h:column>
+
+
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Action Time"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.actionTime}"/>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Task ID"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.taskId}"/>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Status"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.status}"/>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Set Status"/>
+                                    </f:facet>
+                                    <h:selectOneMenu value="#{item.status}" styleClass="form-select">
+                                        <f:selectItem itemValue="Pending" itemLabel="Pending"/>
+                                        <f:selectItem itemValue="Approved" itemLabel="Approved"/>
+                                    </h:selectOneMenu>
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="User ID"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.userId.empFirstname}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Actions" />
+                                    </f:facet>
+                                    <h:commandButton value="Approve" 
+                                                     action="#{managerCdiBean.approveTask(item)}"
+                                                     styleClass="btn btn-success btn-sm" />
+                                </h:column>
+                            </h:dataTable>
+                        </div>
+                    </h:form>
+                </f:view>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

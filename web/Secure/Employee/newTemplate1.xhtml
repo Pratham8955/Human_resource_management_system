@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
+
+        <title>Employee Dashboard</title>
+
+        <link rel="icon" href="./resources/assets/img/kaiadmin/favicon.ico" type="image/x-icon" />
+
+        <!-- Fonts and icons -->
+        <script src="./resources/assets/js/plugin/webfont/webfont.min.js"></script>
+        <script>
+            WebFont.load({
+                google: {families: ["Public Sans:300,400,500,600,700"]},
+                custom: {
+                    families: [
+                        "Font Awesome 5 Solid",
+                        "Font Awesome 5 Regular",
+                        "Font Awesome 5 Brands",
+                        "simple-line-icons"
+                    ],
+                    urls: ["./resources/assets/css/fonts.min.css"]
+                },
+                active: function () {
+                    sessionStorage.fonts = true;
+                }
+            });
+        </script>
+
+        <!-- CSS Files -->
+        <link rel="stylesheet" href="./resources/assets/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="./resources/assets/css/plugins.min.css" />
+        <link rel="stylesheet" href="./resources/assets/css/kaiadmin.min.css" />
+        <link rel="stylesheet" href="./resources/assets/css/demo.css" />
+
+        <h:outputStylesheet library="primefaces" name="primeicons/primeicons.css" />
+        <h:outputStylesheet library="primefaces" name="themes/saga/theme.css" />
+        <h:outputScript library="primefaces" name="jquery/jquery.js" />
+        <h:outputScript library="primefaces" name="core.js" />
+
+
+    </h:head>
+
+    <h:body>
+        <div class="wrapper">
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="index.xhtml">
+                    <img src="./resources/assets/img/kaiadmin/favicon.png" alt="navbar brand" height="30" />
+                    <span>Employee</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="EmployeeDashboard.xhtml">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Supervisors.xhtml">Supervisors</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Departments.xhtml">Departments</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Employee.xhtml">Employee</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Files.xhtml">Files</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Sidebar -->
+            <div class="sidebar" data-background-color="dark">
+                <div class="sidebar-logo">
+                    <!-- Logo Header -->
+                    <div class="logo-header" data-background-color="dark">
+                        <a href="index.xhtml" class="logo">
+                            <img
+                                src="./resources/assets/img/kaiadmin/favicon.png"
+                                alt="navbar brand"
+                                class="navbar-brand"
+                                height="20"
+                                />
+                            <div style="color: white; font-family: monospace;padding-left: 10px; font-size: 25px;">
+                                Employee
+                            </div>
+                        </a>
+                        <div class="nav-toggle">
+                            <button class="btn btn-toggle toggle-sidebar">
+                                <i class="gg-menu-right"></i>
+                            </button>
+                            <button class="btn btn-toggle sidenav-toggler">
+                                <i class="gg-menu-left"></i>
+                            </button>
+                        </div>
+                        <button class="topbar-toggler more">
+                            <i class="gg-more-vertical-alt"></i>
+                        </button>
+                    </div>
+                    <!-- End Logo Header -->
+                </div>
+                <div class="sidebar-wrapper scrollbar scrollbar-inner">
+                    <div class="sidebar-content">
+                        <ul class="nav nav-secondary">
+<!--                            <li class="nav-item active">
+                                <a href="EmployeeDashboard.xhtml">
+                                    <i class="fas fa-home"></i>
+                                    <p>Dashboard</p>
+                                </a>
+                            </li>-->
+                            <li class="nav-section">
+                                <span class="sidebar-mini-icon"><i class="fa fa-ellipsis-h"></i></span>
+                                <h4 class="text-section">Components</h4>
+                            </li>
+
+                            <li class="nav-item">
+                                <a data-bs-toggle="collapse" href="#sidebarLayouts">
+                                    <i class="fas fa-th-list"></i>
+                                    <p>Applications</p>
+                                    <span class="caret"></span>
+                                </a>
+                                <div class="collapse" id="sidebarLayouts">
+                                    <ul class="nav nav-collapse">
+                                        <li>
+                                            <a href="Immediateleave.xhtml">
+                                                <span class="sub-item">Add ImmediateLeave</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="Preplanned.xhtml">
+                                                <span class="sub-item">Add PrePlannedLeave</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="Resignation.xhtml">
+                                                <span class="sub-item">Resignation</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a data-bs-toggle="collapse" href="#Status">
+                                    <i class="fas fa-clipboard-list"></i>
+
+                                    <p>Applications Status</p>
+                                    <span class="caret"></span>
+                                </a>
+                                <div class="collapse" id="Status">
+                                    <ul class="nav nav-collapse">
+                                        <li>
+                                            <a href="ShowImmediateLeave.xhtml">
+                                                <span class="sub-item">ImmediateLeave Status</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="ShowPreplannedLeave.xhtml">
+                                                <span class="sub-item">PrePlannedLeave Status</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="ShowResignation.xhtml">
+                                                <span class="sub-item">Resignation Status</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a  href="TaskSheet.xhtml">
+                                    <i class="fas fa-layer-group"></i>
+                                    <span class="sub-item">Task Sheet</span>
+
+                                </a>
+
+                            </li>
+                            <li class="nav-item">
+                                <a data-bs-toggle="collapse" href="#tables">
+                                    <i class="fas fa-table"></i>
+                                    <p>Attendance</p>
+                                    <span class="caret"></span>
+                                </a>
+                                <div class="collapse" id="tables">
+                                    <ul class="nav nav-collapse">
+                                        <li>
+                                            <a href="timesheet.xhtml">
+                                                <span class="sub-item">In/Out</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="attendanceReport.xhtml">
+                                                <span class="sub-item">Report</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a  href="EmployeeTraining.xhtml">
+                                   <i class="fas fa-chalkboard-teacher"></i>
+
+                                    <span class="sub-item">Training</span>
+
+                                </a>
+
+                            </li>
+
+                            <li class="nav-item" style="margin-top: 370px; font-size: 3 rem;">
+                                <h:form>
+                                    <h:commandLink class="dropdown-item" action="#{loginBean.logout()}"><i class="fas fa-sign-out-alt"></i>
+                                        Logout </h:commandLink>
+                                </h:form>
+
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Logout Button -->
+                <div class="sidebar-footer">
+                    <a href="Logout.xhtml" class="btn btn-danger btn-block">Logout</a>
+                </div>
+            </div>
+
+            <!-- Main Panel -->
+            <div class="main-panel">
+
+                <!-- Content -->
+                <div id="content" class="left_content">
+                    <ui:insert name="content">Content </ui:insert>
+                </div>
+            </div>
+        </div>
+
+        <!-- JavaScript Files -->
+        <script src="./resources/assets/js/core/jquery-3.7.1.min.js"></script>
+        <script src="./resources/assets/js/core/popper.min.js"></script>
+        <script src="./resources/assets/js/core/bootstrap.min.js"></script>
+        <script src="./resources/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+        <script src="./resources/assets/js/plugin/chart.js/chart.min.js"></script>
+        <script src="./resources/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+        <script src="./resources/assets/js/plugin/chart-circle/circles.min.js"></script>
+        <script src="./resources/assets/js/plugin/datatables/datatables.min.js"></script>
+        <script src="./resources/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+        <script src="./resources/assets/js/plugin/jsvectormap/jsvectormap.min.js"></script>
+        <script src="./resources/assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+        <script src="./resources/assets/js/kaiadmin.min.js"></script>
+    </h:body>
+
+</html>

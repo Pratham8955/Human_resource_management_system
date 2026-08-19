@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+            
+        <ui:composition template="newTemplate.xhtml">
+            <ui:define name="content">
+                <div class="container mt-4">
+                    <h2 class="mb-4">Add New Employee</h2>
+                    <h:form class="needs-validation">
+                        <div class="row">
+
+                            <!-- First Name -->
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName" class="form-label">First Name:</label>
+                                <h:inputText id="firstName" value="#{adminCdiBean.firstname}" required="true" class="form-control" />
+                            </div>
+
+                            <!-- Last Name -->
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName" class="form-label">Last Name:</label>
+                                <h:inputText id="lastName" value="#{adminCdiBean.lastname}" required="true" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Email -->
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Email:</label>
+                                
+                                <h:inputText id="email" value="#{adminCdiBean.email}" required="true" class="form-control" />
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="col-md-6 mb-3">
+                                <label for="phone" class="form-label">Phone:</label>
+                                <h:inputText id="phone" value="#{adminCdiBean.phone}" required="true" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Address -->
+                            <div class="col-md-12 mb-3">
+                                <label for="address" class="form-label">Address:</label>
+                                <h:inputText id="address" value="#{adminCdiBean.address}" required="true" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Gender -->
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Gender:</label>
+                                <h:selectOneRadio value="#{adminCdiBean.gender}" required="true" layout="pageDirection">
+                                    <f:selectItem itemLabel="Male" itemValue="Male" />
+                                    <f:selectItem itemLabel="Female" itemValue="Female" />
+                                </h:selectOneRadio>
+                            </div>
+
+                           
+                        </div>
+
+                        <div class="row">
+                            <!-- Hire Date -->
+                            <div class="col-md-6 mb-3">
+                                <label for="hireDate" class="form-label">Hire Date:</label>
+                                <h:inputText id="hireDate" value="#{adminCdiBean.hiredate}" required="true" class="form-control">
+                                    <f:convertDateTime pattern="yyyy-MM-dd" />
+                                </h:inputText>
+                            </div>
+
+                            <!-- Salary -->
+                            <div class="col-md-6 mb-3">
+                                <label for="salary" class="form-label">Salary:</label>
+                                <h:inputText id="salary" value="#{adminCdiBean.salary}" required="true" class="form-control">
+                                    <f:convertNumber />
+                                </h:inputText>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Department Name -->
+                            <div class="col-md-6 mb-3">
+                                <label for="deptName" class="form-label">Department Name:</label>
+                                <h:selectOneMenu id="deptName" value="#{adminCdiBean.emp_depid}" class="form-select">
+                                    <f:selectItem itemLabel="-- Select a Department --" itemValue="" />
+                                    <f:selectItems value="#{adminCdiBean.showDepartment()}" var="manager"
+                                                   itemLabel="#{manager.depName}" itemValue="#{manager.depId}" />
+                                </h:selectOneMenu>
+                            </div>
+
+                            <!-- Manager Name -->
+                            <div class="col-md-6 mb-3">
+                                <label for="managerName" class="form-label">Manager Name:</label>
+                                <h:selectOneMenu id="managerName" value="#{adminCdiBean.emp_managername}" class="form-select">
+                                    <f:selectItem itemLabel="-- Select a Manager --" itemValue="" />
+                                    <f:selectItems value="#{adminCdiBean.showEmployee()}" var="manager"
+                                                   itemLabel="#{manager.empFirstname}" itemValue="#{manager.empFirstname}" />
+                                </h:selectOneMenu>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="row">
+                            <div class="col-md-12 d-flex justify-content-end">
+                                <h:commandButton value="Edit Employee" action="#{adminCdiBean.editEmployee()}" class="btn btn-success" />
+                            </div>
+                        </div>
+                    </h:form>
+                </div>
+            </ui:define>
+        </ui:composition>
+        </h:body>
+
+</html>
